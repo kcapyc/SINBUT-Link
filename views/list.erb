@@ -1,0 +1,28 @@
+<p><strong class="cap"><%=session[:identity]%></strong>, для вас подготовлен список:</p>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Имя</th>
+			<th>Телефон</th>
+			<th>Дата записи</th>
+			<th>Категория</th>
+			<th>Сообщение</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @results.each do |row| %>
+			<tr>
+				<td><%= row['id'] %></td>
+				<td><%= row['guestname'] %></td>
+				<td><%= row['phone'] %></td>
+				<td><%= row['datestamp'] %></td>
+				<td><%= row['category'] %></td>
+				<td><%= row['message'] %></td>
+			</tr>
+		<% end %>
+	</tbody>
+
+</table>

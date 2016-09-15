@@ -1,0 +1,51 @@
+<h2>Обратная связь</h2>
+<p>Вы можете написать нам.</p>
+
+<script src="jquery.datetimepicker.js"></script>
+<link rel="stylesheet" href="jquery.datetimepicker.css">
+<script type="text/javascript">
+
+$(function() {
+  // тут можно написать любой js-код, который исполнится после загрузки страницы
+  $('#datetimepicker').datetimepicker();
+});
+
+</script>
+
+
+<form action="/visit" method="POST" role="form">
+
+  <div class="form-group">
+    <label>Ваше имя</label>
+    <input name="guestname" type="text" class="form-control" placeholder="Ваше имя" value="<%= @guestname %>">
+  </div>
+
+  <div class="form-group">
+    <label>Ваш телефон</label>
+    <input name="phone" type="text" class="form-control" placeholder="Ваш телефон" value="<%= @phone %>">
+  </div>
+
+  <div class="form-group">
+    <label>Укажите дату и время</label>
+    <input id="datetimepicker" name="datetime" type="text" class="form-control" placeholder="Введите дату и время" value="<%= @datetime %>">
+  </div>
+
+  <div class="form-group">
+    <label>Выберите категорию:</label>
+    <select name="category" class="form-control">
+    
+      <% @categorys.each do |item| %>
+        <option <%= @category == item['name'] ? 'selected' : '' %>><%= item['name'] %></option>
+      <% end %>
+
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Сообщение:</label>
+    <textarea name="message" type="text" rows="3" class="form-control" placeholder="Ваше сообщение"><%= @message %></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Отправить</button>
+
+</form>
